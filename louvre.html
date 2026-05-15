@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <title>Histori'art</title>
+</head>
+
+<body class="body">
+    <header class="banner">
+        <h1>Histori'art</h1>
+        <div class="main">
+            <h2>Le jeu de cartes sur l'histoire de l'art</h2>
+        </div>
+        <div class="guide">
+            <div class="entree"><a href="index.php">✦ Menu</a></div>
+            <div class="entree"><a href="annexe.php">✦ Les cartes</a></div>
+            <div class="entree"><a href="collection.php">✦ Les collections</a></div>
+        </div>
+        <button class="buste-btn" id="busteBtn" aria-label="Profil" onclick="window.location.href='login.php'">
+            <img src="buste_clair.png" alt="Buste" id="busteImg">
+        </button>
+        <button class="button" id="themeToggle">Mode clair</button>
+    </header>
+    <main>
+
+        <!-- onglets tabs -->
+        <div class="tabs">
+            <button class="tab active" data-target="communes">Communes</button>
+            <button class="tab" data-target="rares">Rares</button>
+            <button class="tab" data-target="maitres">Maîtres</button>
+            <button class="tab" data-target="legendaires">Légendaires</button>
+        </div>
+
+        <!-- onglet cartes communes -->
+        <div id="communes" class="tab-content visible">
+            <div class="communes">
+                <div class="c1"><img src="louvre/joconde.png" alt="la joconde"></div>
+                <div class="c2"><img src="louvre/Vitruve.png" alt="vitruve"></div>
+                <div class="c3"><img src="louvre/libertéguidantlepeuple.png" alt="La liberté guidant le peuple"></div>
+                <div class="c4"><img src="louvre/scribe.png" alt="Le scribe"></div>
+            </div>
+        </div>
+
+        <!-- onglet cartes rares-->
+        <div id="rares" class="tab-content">
+            <div class="rare">
+                <div class="r1"><img src="louvre/meduse.png" alt="radeau de la meduse"></div>
+                <div class="r2"><img src="louvre/nocedecana.png" alt="Les noces de cana"></div>
+                <div class="r3"><img src="louvre/napoleon.png" alt="Le sacre de Napoleon"></div>
+                <div class="r4"><img src="louvre/venusDeMilo.png" alt="La vénus de Milo"></div>
+            </div>
+        </div>
+
+        <!-- onglet cartes maitres -->
+        <div id="maitres" class="tab-content">
+            <div class="maitre">
+                <div class="m1"><img src="louvre/Victory.png" alt="La victoire de Samocrathe"></div>
+                <div class="m2"><img src="louvre/dianedeversailles.png" alt="Diane de versailles"></div>
+                <div class="m3"><img src="louvre/odalisque.png" alt="La grande odalisque"></div>
+                <div class="m4"><img src="louvre/louisXIV.png" alt="Louis XIV en costume"></div>
+            </div>
+        </div>
+
+        <!-- onglet cartes légendaires -->
+        <div id="legendaires" class="tab-content">
+            <div class="legendaire">
+                <div class="l1"><img src="louvre/Horaces.png" alt="Les Horaces"></div>
+                <div class="l2"><img src="louvre/ferronniere.png" alt="ferronniere"></div>
+                <div class="l3"><img src="louvre/psychée.png" alt="psychée"></div>
+                <div class="l4"><img src="louvre/Zodiaque.png" alt="Zodiaque"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="pagefooter" class="footer">
+        <div class="imagefooter">
+            <img src="carte.png" alt="carte">
+        </div>
+        <div class="textfooter">
+            Tous droits réservés © 2025 Histori'art
+        </div>
+    </footer>
+</body>
+</html>

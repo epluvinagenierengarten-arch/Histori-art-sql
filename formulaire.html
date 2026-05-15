@@ -1,0 +1,675 @@
+<!DOCTYPE html> 
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <title>Newsletter - Histori'art</title>
+    <style>
+        /* Newsletter Form Styles */
+        .newsletter-container {
+            background: var(--bg-section-light);
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            padding: 50px 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeSlideIn 0.6s ease forwards;
+        }
+
+        [data-theme="light"] .newsletter-container {
+            background: #060404;
+        }
+
+        .newsletter-header {
+            text-align: center;
+            margin-bottom: 35px;
+            border-bottom: 2px solid rgba(201, 169, 89, 0.3);
+            padding-bottom: 25px;
+        }
+
+        .newsletter-header h2 {
+            font-size: 48px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .newsletter-header p {
+            font-size: 16px;
+            color: rgba(201, 169, 89, 0.7);
+            letter-spacing: 0.05em;
+            text-align: center;
+        }
+
+        .message-error {
+            background-color: rgba(212, 42, 0, 0.15);
+            border-left: 4px solid rgb(212, 42, 0);
+            color: rgb(212, 42, 0);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .message-error.visible {
+            display: block;
+        }
+
+        .message-success {
+            background-color: rgba(81, 150, 2, 0.15);
+            border-left: 4px solid rgb(81, 150, 2);
+            color: rgb(81, 150, 2);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .message-success.visible {
+            display: block;
+        }
+
+        .message-error li {
+            margin-left: 15px;
+            margin-bottom: 5px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.02em;
+            font-family: 'Dancing Script', sans-serif;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid rgba(201, 169, 89, 0.3);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Dancing Script', serif;
+            background: var(--bg-section-light);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] input[type="text"],
+        [data-theme="light"] input[type="email"],
+        [data-theme="light"] select,
+        [data-theme="light"] textarea {
+            background: #e9e9e9;
+            color: #060404;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--text-color);
+            box-shadow: 0 0 0 4px rgba(201, 169, 89, 0.15);
+        }
+
+        input.success,
+        select.success {
+            border: 2px solid rgb(81, 150, 2);
+            background-color: rgba(81, 150, 2, 0.08);
+        }
+
+        input.error,
+        select.error {
+            border: 2px solid rgb(212, 42, 0);
+            background-color: rgba(212, 42, 0, 0.08);
+        }
+
+        .radio-group {
+            gap: 18px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        input[type="radio"] {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            accent-color: var(--text-color);
+        }
+
+        .radio-option label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 15px;
+            font-family: 'Dancing Script', sans-serif;
+        }
+
+        .info-text {
+            font-size: 12px;
+            color: #5f4a15;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        .info-text.success {
+            color: rgb(81, 150, 2);
+        }
+
+        .info-text.error {
+            color: rgb(212, 42, 0);
+        }
+
+        .benefits {
+            background: rgba(201, 169, 89, 0.08);
+            border: 1px solid rgba(201, 169, 89, 0.2);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 25px;
+            border-top: 3px solid var(--text-color);
+        }
+
+        .benefits h3 {
+            color: var(--text-color);
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            font-family: 'Dancing Script', sans-serif;
+        }
+
+        .benefits ul {
+            list-style: none;
+            font-size: 14px;
+            color: rgba(201, 169, 89, 0.85);
+        }
+
+        .benefits li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.5;
+            font-family: 'Dancing Script', sans-serif;
+        }
+
+        .benefits li:before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--text-color);
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .newsletter-form button {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #b78917 0%, #8b6914 100%);
+            color: #060404;
+            border: 2px solid var(--text-color);
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Dancing Script', serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        [data-theme="light"] .newsletter-form button {
+            background: linear-gradient(135deg, #ba890e 0%, #6b5410 100%);
+            color: white;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(250, 179, 0, 0.57);
+        }
+
+        .newsletter-form button:active {
+            transform: translateY(-1px);
+        }
+
+        main {
+            padding: 40px 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+
+<body class="body">
+    <header class="banner">
+        <h1>Histori'art</h1>
+        <div class="main">
+            <h2>Le jeu de cartes sur l'histoire de l'art</h2>
+        </div>
+        <div class="guide">
+            <div class="entree"><a href="index.php">✦ Menu</a></div>
+            <div class="entree"><a href="annexe.php">✦ Les cartes</a></div>
+            <div class="entree"><a href="collection.php">✦ Les collections</a></div>
+        </div>
+        <button class="button" id="themeToggle">Mode clair</button>
+    </header>
+
+    <main>
+        <div class="newsletter-container">
+            <div class="newsletter-header">
+                <h2>Newsletter</h2>
+                <p>Inscrivez-vous pour être mis au courrant des nouveautés avant tous le monde!</p>
+            </div>
+
+            <div class="message-error" id="errorContainer"></div>
+            <div class="message-success" id="successContainer"></div>
+
+            <form id="newsletterForm" class="newsletter-form" action="" method="POST">
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="votre.email@exemple.com"
+                        required
+                    >
+                </div>
+
+                <!-- Prénom -->
+                <div class="form-group">
+                    <label for="prenom"><strong>Prénom *</strong></label>
+                    <input 
+                        type="text" 
+                        id="prenom" 
+                        name="prenom" 
+                        placeholder="Ex: Laure" required
+                    >
+                </div>
+
+                <!-- mot de passe -->
+                <div class="form-group">
+                    <label for="mdp"><strong>Mot de passe *</strong></label>
+                    <input 
+                        type="text" 
+                        id="mdp" 
+                        name="mdp" 
+                        placeholder="Ex: JmLelouvre*67" required
+                    >
+                    <div class="info-text">Minimum 8 caractères: 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial (-+_!@#$%^&*.?)</div>
+                </div>
+
+                <!-- Confirmation mot de passe -->
+                <div class="form-group">
+                    <label for="mdpConfirm"><strong>Confirmer le mot de passe *</strong></label>
+                    <input 
+                        type="text" 
+                        id="mdpConfirm" 
+                        name="mdpConfirm" 
+                        placeholder="Confirmez votre mot de passe" required
+                    >
+                    <div class="info-text" id="mdpMatchInfo"></div>
+                </div>
+
+                <!-- Type de collecteur -->
+                <div class="form-group">
+                    <label>Quelles Oeuvres d'arts aimez vous? *</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="Sculpture" name="collector_type" value="Sculpture">
+                            <label for="Sculpture">Sculpture</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="peintureClassique" name="collector_type" value="peintureClassique">
+                            <label for="peintureClassique">Peinture Classique</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="peintureModerne" name="collector_type" value="peintureModerne">
+                            <label for="peintureModerne">Peinture Moderne</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="ObjetArt." name="collector_type" value="ObjetArt">
+                            <label for="ObjetArt">Objets d'arts</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collection préférée -->
+                <div class="form-group">
+                    <label for="collection">Ma collection Histori'art préférée *</label>
+                    <select id="collection" name="collection" required>
+                        <option value=""> -- Sélectionnez une collection -- </option>
+                        <option value="MoMA">MoMA</option>
+                        <option value="Louvre">Louvre</option>
+                        <option value="Van Gogh museum">Van Gogh Museum</option>
+                    </select>
+                </div>
+
+                <!-- Message "Quelle collection souhaitez vous voir à l'Avenir" -->
+                <div class="form-group">
+                    <label for="message">Quelle collection souhaitez vous voir à l'Avenir?</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        placeholder="Parlez-nous de votre passion pour l'art...'">
+                    </textarea>
+                </div>
+
+                <button type="submit">Soumettre</button>
+            </form>
+
+            <div class="benefits">
+                <h3>Avantages de notre newsletter :</h3>
+                <ul>
+                    <li>Accès aux pré-commandes en avant-première</li>
+                    <li>Actualités sur les nouvelles collections</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="textfooter">
+            Tous droits de reproduction et de diffusion réservés © 2025 Histori'art
+        </div>
+    </footer>
+
+    <script>
+        // Récupération des éléments
+        const form = document.getElementById('newsletterForm');
+        const emailInput = document.getElementById('email');
+        const prenomInput = document.getElementById('prenom');
+        const mdpInput = document.getElementById('mdp');
+        const mdpConfirmInput = document.getElementById('mdpConfirm');
+        const mdpMatchInfo = document.getElementById('mdpMatchInfo');
+        const collectionSelect = document.getElementById('collection');
+        const collectorTypeRadios = document.querySelectorAll('input[name="collector_type"]');
+        const errorContainer = document.getElementById('errorContainer');
+        const successContainer = document.getElementById('successContainer');
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        // Initialiser le thème depuis localStorage (clair ou sombre)
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            html.setAttribute('data-theme', savedTheme);
+            updateThemeButton(savedTheme);
+        }
+
+        // Mettre à jour le bouton du thème
+        function updateThemeButton(theme) {
+            themeToggle.textContent = theme === 'dark' ? 'Mode clair' : 'Mode sombre';
+        }
+
+        // Basculer le thème (clair ou sombre)
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = html.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeButton(newTheme);
+            this.classList.add('clicked');
+            setTimeout(() => this.classList.remove('clicked'), 200);
+        });
+
+        // Validation de l'email
+        function isValidEmail(email) {
+            return email.length > 5 && email.includes('@');
+        }
+
+        // Vérifier si les mots de passe correspondent
+        function passwordsMatch() {
+            return mdpInput.value === mdpConfirmInput.value && mdpInput.value.length > 0;
+        }
+
+        // Afficher l'état de la confirmation du mot de passe
+        function updatePasswordMatchStatus() {
+            if (mdpConfirmInput.value.length === 0) {
+                mdpMatchInfo.textContent = '';
+                mdpMatchInfo.className = 'info-text';
+                mdpConfirmInput.classList.remove('success', 'error');
+                return;
+            }
+
+            if (passwordsMatch()) {
+                mdpMatchInfo.textContent = '✓ Les mots de passe correspondent';
+                mdpMatchInfo.className = 'info-text success';
+                mdpConfirmInput.classList.add('success');
+                mdpConfirmInput.classList.remove('error');
+            } else {
+                mdpMatchInfo.textContent = '✗ Les mots de passe ne correspondent pas';
+                mdpMatchInfo.className = 'info-text error';
+                mdpConfirmInput.classList.add('error');
+                mdpConfirmInput.classList.remove('success');
+            }
+        }
+
+        // Vérifier si un type de collecteur est sélectionné
+        function isCollectorTypeSelected() {
+            return Array.from(collectorTypeRadios).some(radio => radio.checked);
+        }
+
+        // Afficher les erreurs
+        function showError(messages) {
+            errorContainer.innerHTML = '<ul>' + messages.map(msg => `<li>${msg}</li>`).join('') + '</ul>';
+            errorContainer.classList.add('visible');
+            successContainer.classList.remove('visible');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Afficher le succès
+        function showSuccess() {
+            successContainer.textContent = '✦ Inscription réussie ! Vérifiez votre email ;)';
+            successContainer.classList.add('visible');
+            errorContainer.classList.remove('visible');
+            form.reset();
+            resetInputStyles();
+            mdpMatchInfo.textContent = '';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Réinitialiser les styles
+        function resetInputStyles() {
+            emailInput.classList.remove('success', 'error');
+            prenomInput.classList.remove('success', 'error');
+            mdpInput.classList.remove('success', 'error');
+            mdpConfirmInput.classList.remove('success', 'error');
+            collectionSelect.classList.remove('success', 'error');
+        }
+
+        // Mettre à jour le style d'un input
+        function updateInputStyle(input, isValid) {
+            if (isValid) {
+                input.classList.add('success');
+                input.classList.remove('error');
+            } else {
+                input.classList.add('error');
+                input.classList.remove('success');
+            }
+        }
+
+        // Fonction de validation du mot de passe
+        function isValidPassword(mdp) {
+            // Minimum 8 caractères
+            if (mdp.length < 8) {
+                return false;
+            }
+            // Doit contenir au moins une minuscule
+            if (!/[a-z]/.test(mdp)) {
+                return false;
+            }
+            // Doit contenir au moins une majuscule
+            if (!/[A-Z]/.test(mdp)) {
+                return false;
+            }
+            // Doit contenir au moins un chiffre
+            if (!/\d/.test(mdp)) {
+                return false;
+            }
+            // Doit contenir au moins un caractère spécial
+            if (!/[-+_!@#$%^&*.,?]/.test(mdp)) {
+                return false;
+            }
+            return true;
+        }
+
+        // Submit du formulaire
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = emailInput.value;
+            const prenom = prenomInput.value;
+            const mdp = mdpInput.value;
+            const mdpConfirm = mdpConfirmInput.value;
+            const collection = collectionSelect.value;
+            const errors = [];
+
+            resetInputStyles();
+
+            // Validation du prénom
+            if (prenom.length < 2) {
+                errors.push('Le prénom doit contenir au moins 2 caractères');
+                updateInputStyle(prenomInput, false);
+            } else {
+                updateInputStyle(prenomInput, true);
+            }
+
+            // Validation du Mot de passe
+            if (!isValidPassword(mdp)) {
+                errors.push('Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial (-+_!@#$%^&*.,?)');
+                updateInputStyle(mdpInput, false);
+            } else {
+                updateInputStyle(mdpInput, true);
+            }
+
+            // Validation de la confirmation du mot de passe
+            if (mdp !== mdpConfirm) {
+                errors.push('Les mots de passe ne correspondent pas');
+                updateInputStyle(mdpConfirmInput, false);
+            } else {
+                updateInputStyle(mdpConfirmInput, true);
+            }
+
+            // Validation de l'email
+            if (!isValidEmail(email)) {
+                errors.push('L\'email doit être valide');
+                updateInputStyle(emailInput, false);
+            } else {
+                updateInputStyle(emailInput, true);
+            }
+
+            // Validation de la collection
+            if (!collection) {
+                errors.push('Veuillez sélectionner une collection');
+                updateInputStyle(collectionSelect, false);
+            } else {
+                updateInputStyle(collectionSelect, true);
+            }
+
+            // Validation du type de collecteur
+            if (!isCollectorTypeSelected()) {
+                errors.push('Veuillez sélectionner un type d\'œuvre d\'art');
+            }
+
+            if (errors.length > 0) {
+                showError(errors);
+            } else {
+                showSuccess();
+            }
+        });
+
+        // Validation en temps réel du mot de passe et confirmation
+        mdpInput.addEventListener('input', function() {
+            if (this.classList.contains('error')) {
+                this.classList.remove('error');
+            }
+            updatePasswordMatchStatus();
+        });
+
+        mdpConfirmInput.addEventListener('input', function() {
+            updatePasswordMatchStatus();
+        });
+
+        // Validation en temps réel
+        emailInput.addEventListener('blur', function() {
+            if (this.value.length > 0) {
+                updateInputStyle(this, isValidEmail(this.value));
+            }
+        });
+
+        prenomInput.addEventListener('blur', function() {
+            if (this.value.length > 0) {
+                updateInputStyle(this, this.value.length >= 2);
+            }
+        });
+
+        mdpInput.addEventListener('blur', function() {
+            if (this.value.length > 0) {
+                updateInputStyle(this, isValidPassword(this.value));
+            }
+        });
+
+        // Enlever l'erreur en tapant
+        emailInput.addEventListener('input', function() {
+            if (this.classList.contains('error')) {
+                this.classList.remove('error');
+            }
+        });
+
+        prenomInput.addEventListener('input', function() {
+            if (this.classList.contains('error')) {
+                this.classList.remove('error');
+            }
+        });
+
+        // Initialiser
+        initTheme();
+    </script>
+</body>
+</html>

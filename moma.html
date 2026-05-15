@@ -1,0 +1,93 @@
+<!DOCTYPE html> 
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <!-- importation de polices d'écritures depuis goolgle font-->
+    <title>Histori'art</title>
+</head>
+
+<body class="body">
+    <header class="banner">
+        <h1>Histori'art</h1>
+        <div class="main">
+            <h2>Le jeu de cartes sur l'histoire de l'art</h2>
+        </div>
+        <div class="guide">
+            <div class="entree"><a href="index.php">✦ Menu</a></div>
+            <div class="entree"><a href="annexe.php">✦ Les cartes</a></div>
+            <div class="entree"><a href="collection.php">✦ Les collections</a></div>
+        </div>
+        <button class="buste-btn" id="busteBtn" aria-label="Profil" onclick="window.location.href='login.php'">
+            <img src="buste_clair.png" alt="Buste" id="busteImg">
+        </button>
+        <button class="button" id="themeToggle">Mode clair</button>
+    </header>
+
+    <main>
+
+        <!-- onglets tabs -->
+        <div class="tabs">
+            <button class="tab active" data-target="communes">Communes</button>
+            <button class="tab" data-target="rares">Rares</button>
+            <button class="tab" data-target="maitres">Maîtres</button>
+            <button class="tab" data-target="legendaires">Légendaires</button>
+        </div>
+
+        <!-- onglet carte socmmunes -->
+        <div id="communes" class="tab-content visible">
+            <!-- visible permet d'innitialiser le fait que lorqu'on ouvre la page c'est ça qui est affiché-->
+            <div class="communes">
+                <div class="c1"><img src="moma/nuitetoilee.png" alt="la nuit etoilee de VG"></div>
+                <div class="c2"><img src="moma/memoiredali.png" alt="la persistance de la memoire"></div>
+                <div class="c3"><img src="moma/avignon.png" alt="les demoiselles d'avignon"></div>
+                <div class="c4"><img src="moma/lesamants.png" alt="les amants"></div>
+            </div>
+        </div>
+
+        <!-- onglet cartes rares-->
+        <div id="rares" class="tab-content">
+            <div class="rare">
+                <div class="r1"><img src="moma/bohemienne.png" alt="la bohemienne endormie"></div>
+                <div class="r2"><img src="moma/mirroirmagritte.png" alt="le faux mirroir magritte"></div>
+                <div class="r3"><img src="moma/lavilleseleve.png" alt="la ville se leve"></div>
+                <div class="r4"><img src="moma/frida.png" alt="bouclées frida"></div>
+            </div>
+        </div>
+
+        <!-- onglet cartes maitres -->
+        <div id="maitres" class="tab-content">
+            <div class="maitre">
+                <div class="m1"><img src="moma/boat.png" alt="le bateau"></div>
+                <div class="m2"><img src="moma/hope2.png" alt="l'espoir II"></div>
+                <div class="m3"><img src="moma/fingerman.png" alt="l'homme au doigt"></div>
+                <div class="m4"><img src="moma/familykhalo.png" alt="famille frida khalo"></div>
+            </div>
+        </div>
+
+        <!-- onglet carte slégendaires -->
+        <div id="legendaires" class="tab-content">
+            <div class="legendaire">
+                <div class="l1"><img src="moma/pontmonet.png" alt="pont japonnais monet"></div>
+                <div class="l2"><img src="moma/catalan.png" alt="paysage catalan"></div>
+                <div class="l3"><img src="moma/woman.png" alt="Woman I"></div>
+                <div class="l4"><img src="moma/chatetoiseau.png" alt="le chat et l'oiseau"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="pagefooter" class="footer">
+        <div class="imagefooter">
+            <img src="carte.png" alt="carte">
+        </div>
+        <div class="textfooter">
+            Tous droits réservés © 2025 Histori'art
+        </div>
+    </footer>
+</body>
+</html>

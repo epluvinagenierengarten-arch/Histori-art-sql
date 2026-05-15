@@ -1,0 +1,1117 @@
+:root {
+    --bg-color: #060404;
+    --text-color: #c9a959;
+    --bg-section-dark: #060404;
+    --bg-section-light: white;
+    --bg-banner: black;
+    --bg-main-dark: rgb(48, 47, 47);
+    --buste-dark: url('buste_clair.png');
+}
+
+[data-theme="light"] {
+    --bg-color: white;
+    --text-color: #b9923b;
+    --bg-section-dark: #e9e9e9;
+    --bg-section-light: #060404;
+    --bg-banner: #e9e9e9;
+    --bg-main-dark: #e4e4e4;
+    --buste-light: url('buste_clair.png');
+}
+
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.3s ease;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+p, h1, h2, h3, h4, a, .entree, .textfooter, .guide {
+    color: var(--text-color);
+}
+
+p {
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 72px;
+    text-align: center;
+    font-weight: bold;
+}
+
+h2 {
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 36px;
+    text-align: center;
+}
+
+h3 {
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 40px;
+    text-align: center;
+}
+
+h4 {
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+.banner {
+    background: var(--bg-banner);
+    min-height: 270px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.banner .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+main {
+    background: var(--bg-main-dark);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    background: var(--bg-banner);
+    justify-content: center;
+    min-height: 50px;
+    padding: 10px 0;
+    flex-shrink: 0;
+}
+
+.guide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.buste-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 225px;
+    width: 44px;
+    height: 44px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.buste-btn img {
+    width: 50px !important;
+    height: 50px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
+    min-width: unset !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+.buste-btn:hover img {
+    opacity: 0.75;
+    transition: opacity 0.2s;
+}
+
+.bandeau1 {
+    background: var(--bg-section-dark);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    gap: 0;
+    flex-wrap: wrap;
+        border-top:2px solid #a78014a1;
+    border-bottom:2px solid #a78014a1;
+}
+
+
+.image11, .image21, .image31 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(201, 169, 89, 0.15);
+    transition: background 0.3s ease;
+}
+
+.image11 { border-left: none; }
+
+.image11:hover, .image21:hover, .image31:hover {
+    background: rgba(201, 169, 89, 0.04);
+}
+
+.image11 img, .image21 img, .image31 img {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    display: block;
+}
+
+.image11::before { content: '01'; }
+.image21::before { content: '02'; }
+.image31::before { content: '03'; }
+
+.image11::before, .image21::before, .image31::before {
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 64px;
+    color: rgba(201, 169, 89, 0.35);
+    padding: 20px 22px 0;
+    line-height: 1;
+    display: block;
+}
+
+.image11 p, .image21 p, .image31 p {
+    padding: 14px 22px 28px;
+    font-size: 15px;
+    line-height: 1.65;
+    text-align: left;
+    flex: 1;
+}
+
+.bandeau1-texte {
+    width: 100%;
+    padding: 30px 60px 40px;
+    border-top: 1px solid rgba(201, 169, 89, 0.15);
+}
+
+.bandeau1-texte p {
+    font-family: 'Dancing Script', serif;
+    font-size: 17px;
+    color: var(--text-color);
+    line-height: 1.9;
+    text-align: center;
+}
+
+.bandeau1 p {
+    text-align: center;
+    font-size: 24px;
+}
+
+
+.bandeau2 {
+    background: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 520px;
+    width: 100%;
+    padding: 70px 80px;
+    gap: 60px;
+    overflow: hidden;
+    position: relative;
+    border-top:2px solid #a78014a1;
+    border-bottom:2px solid #a78014a1;
+}
+
+.bandeau2::before {
+    content: '';
+    position: absolute;
+    left: 180px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(ellipse, rgba(185,146,59,0.07) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cards-stage {
+    position: relative;
+    width: 380px;
+    height: 440px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.card {
+    position: absolute;
+    width: 220px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition:
+        transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1),
+        opacity   0.45s ease,
+        box-shadow 0.45s ease,
+        filter 0.45s ease;
+    will-change: transform, opacity;
+    transform-origin: bottom center;
+}
+
+.card--far {
+    top: 40px; left: 0px;
+    z-index: 1;
+    transform: perspective(800px) rotateY(-18deg) scale(0.78);
+    opacity: 0.45;
+    filter: brightness(0.75);
+    border: 1px solid rgba(185, 146, 59, 0.2);
+    box-shadow: none;
+}
+
+.card--mid {
+    top: 20px; left: 60px;
+    z-index: 2;
+    transform: perspective(800px) rotateY(-10deg) scale(0.88);
+    opacity: 0.7;
+    filter: brightness(0.9);
+    border: 1px solid rgba(185, 146, 59, 0.3);
+    box-shadow: 4px 8px 30px rgba(185,146,59,0.12);
+}
+
+.card--front {
+    top: 0px; left: 140px;
+    z-index: 3;
+    transform: perspective(800px) rotateY(0deg) scale(1);
+    opacity: 1;
+    filter: brightness(1);
+    border: 1px solid rgba(185, 146, 59, 0.45);
+    box-shadow:
+        0 20px 50px rgba(185,146,59,0.18),
+        0 4px 16px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.card--far:hover  { opacity: 0.6;  filter: brightness(0.85); }
+.card--mid:hover  { opacity: 0.85; filter: brightness(0.95); }
+.card--front:hover {
+    transform: perspective(800px) rotateY(0deg) scale(1.02) translateY(-4px);
+    box-shadow: 0 28px 60px rgba(185,146,59,0.25), 0 4px 20px rgba(0,0,0,0.12);
+}
+
+/* Intérieur des cartes — fond clair */
+.card-inner {
+    display: flex;
+    flex-direction: column;
+    background: #faf7f1;
+    height: 100%;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    background: rgba(185, 146, 59, 0.06);
+    border-bottom: 1px solid rgba(185, 146, 59, 0.12);
+}
+
+.card-badge {
+    font-size: 9px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #999;
+    background: #eee;
+    padding: 2px 5px;
+    border-radius: 3px;
+    letter-spacing: .05em;
+}
+
+.card-title-text {
+    font-family: 'Dancing Script', serif;
+    font-size: 13px;
+    color: #8b6914;
+    flex: 1;
+}
+
+.card-icon { font-size: 14px; }
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #ede8dc;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-desc {
+    padding: 10px 12px;
+    flex: 1;
+    border-bottom: 1px solid rgba(185, 146, 59, 0.1);
+}
+
+.card-desc p {
+    font-family: 'Dancing Script', serif;
+    font-size: 11px;
+    color: #9a7d40;
+    line-height: 1.55;
+    text-align: left;
+}
+
+.card-footer {
+    display: flex;
+    gap: 6px;
+    padding: 8px 10px;
+}
+
+.card-btn {
+    flex: 1;
+    padding: 5px 0;
+    font-family: sans-serif;
+    font-size: 10px;
+    color: #999;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.card-btn:hover {
+    background: #f5f0e8;
+    color: #8b6914;
+}
+
+.bandeau2-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    z-index: 1;
+}
+
+.bandeau2-eyebrow {
+    font-family: 'Dancing Script', serif;
+    font-size: 14px;
+    color: rgba(185, 146, 59, 0.5);
+    letter-spacing: .14em;
+    text-align: left;
+}
+
+.bandeau2-title {
+    font-family: 'Dancing Script', serif;
+    font-size: 52px;
+    color: #b9923b;
+    text-align: left;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.bandeau2-body {
+    font-family: 'Dancing Script', serif;
+    font-size: 18px;
+    color: rgba(139, 105, 20, 0.8);
+    line-height: 1.85;
+    text-align: left;
+}
+
+.bandeau2-dots {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(185, 146, 59, 0.2);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    padding: 0;
+}
+
+.dot--active {
+    background: rgba(185, 146, 59, 0.75);
+    transform: scale(1.35);
+}
+
+.image12 { display: none; }
+.texte12 { display: none; }
+
+.intermédiaire {
+    background: var(--bg-section-light);
+    min-height: 100px;
+    padding: 20px 20px ;
+    border-top:2px solid #a78014a1;
+}
+
+.intermédiaire1 {
+    min-height: 100px;
+    padding: 20px 20px ;
+    border-top:2px solid #a78014a1;
+}
+
+.bandeau3 {
+    background: var(--bg-section-light);
+    display: flex;
+    justify-content: space-between;
+    min-height: 700px;
+    width: 100%;
+    animation: fadeSlideIn 0.6s ease forwards;
+}
+
+.image13, .image23, .image33, .image43 {
+    width: 30%;
+    margin: 30px 20px 20px;
+    animation-delay: 0s;
+}
+
+.lien {
+    background: var(--bg-section-light);
+    font-size: 40px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+a {
+    font-size: 40px;
+    font-family: 'Dancing Script', sans-serif;
+    text-decoration: none;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    background: var(--bg-banner);
+    min-height: 50px;
+    padding: 10px;
+}
+
+.imagefooter {
+    width: 5%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.textfooter {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.communes, .rare, .maitre, .legendaire {
+    background: var(--bg-section-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    animation: fadeSlideIn 0.8s ease forwards;
+}
+
+.c1, .c2, .c3, .c4,
+.r1, .r2, .r3, .r4,
+.m1, .m2, .m3, .m4,
+.l1, .l2, .l3, .l4 {
+    width: 20%;
+    margin: 30px 20px 20px;
+}
+
+.entree {
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 20px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    background: var(--bg-section-light);
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tab {
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 30px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    background: rgb(194, 175, 129);
+    color: black;
+    border-radius: 8px;
+}
+
+.tab.active {
+    background: black;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.visible {
+    display: block;
+}
+
+#themeToggle {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 28px;
+    padding: 10px 25px;
+    border: 2px solid var(--text-color);
+    background: transparent;
+    color: var(--text-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease, color 0.3s ease, background 0.3s ease, border 0.3s ease;
+    box-shadow: 0 0 8px rgba(201, 169, 89, 0.4);
+}
+
+#themeToggle:hover {
+    background: var(--text-color);
+    color: #1111;
+    box-shadow: 0 0 15px rgba(201, 169, 89, 0.8), 0 0 25px rgba(201, 169, 89, 0.5);
+    transform: translateY(-2px);
+}
+
+#themeToggle:active {
+    transform: scale(0.95);
+}
+
+#themeToggle.clicked {
+    transform: scale(0.92);
+}
+
+/* collection */
+
+.museums-container {
+    width: 100%;
+    padding: 40px 20px;
+    background: var(--bg-main-dark);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.museums-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.museum-btn {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    padding: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    background: black;
+    font-family: 'Dancing Script', serif;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+
+.museum-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.museum-btn:hover {
+    background-color: #8b6914;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(201, 169, 89, 0.6);
+}
+
+.carte-box {
+    width: 100%;
+    padding: 10px 10px;
+}
+ 
+.carte-container {
+    width: 100%;
+}
+ 
+.galerie {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 20px 0;
+    width: 100%;
+    overflow-x: auto;
+}
+ 
+.carte {
+    flex: 1 1 calc(33.333% - 14px);
+    min-width: 0;
+    max-width: 100%;
+}
+ 
+.carte a {
+    display: block;
+    width: 100%;
+}
+ 
+.carte img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.newsletterlink{
+    font-size: 32px;
+    text-align: center;
+}
+
+.gap{
+    size: 100px;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*responsives*/
+
+@media (max-width: 1024px) {
+
+    h1 { font-size: 55px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 32px; }
+    h4 { font-size: 38px; }
+    .entree { font-size: 48px; }
+    a { font-size: 34px; }
+    .lien { font-size: 34px; }
+
+    .guide {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .bandeau1 {
+        flex-direction: column;
+    }
+    .image11, .image21, .image31 {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid rgba(201, 169, 89, 0.15);
+    }
+    .image11 { border-top: none; }
+
+    .bandeau2 {
+        flex-direction: column;
+        padding: 50px 40px;
+        gap: 50px;
+    }
+    .bandeau2-text {
+        max-width: 100%;
+        align-items: center;
+    }
+    .bandeau2-eyebrow,
+    .bandeau2-title,
+    .bandeau2-body { text-align: center; }
+    .bandeau2-dots { justify-content: center; }
+    .cards-stage { width: 340px; height: 400px; }
+    .card { width: 200px; }
+    .card--far  { left: 0; }
+    .card--mid  { left: 50px; }
+    .card--front { left: 120px; }
+
+    .bandeau3 {
+        flex-wrap: wrap;
+        min-height: auto;
+        justify-content: center;
+        padding: 20px 0;
+        animation: fadeSlideIn 0.6s ease forwards;
+        border-top:2px solid #a78014a1;
+        border-bottom:2px solid #a78014a1
+    }
+    .image13, .image23, .image33, .image43 {
+        width: 40%;
+        margin: 20px;
+    }
+
+    .c1, .c2, .c3, .c4,
+    .r1, .r2, .r3, .r4,
+    .m1, .m2, .m3, .m4,
+    .l1, .l2, .l3, .l4 {
+        width: 28%;
+        margin: 15px;
+    }
+
+    .imagefooter { width: 10%; }
+
+    #themeToggle { font-size: 22px; padding: 8px 18px; }
+
+    .museums-buttons {
+        gap: 15px;
+    }
+
+    .museum-btn {
+        min-width: 180px;
+        max-width: 250px;
+        height: 120px;
+    }
+
+    .museums-header h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    h1 { font-size: 42px; }
+    h2 { font-size: 26px; }
+    h3 { font-size: 28px; }
+    h4 { font-size: 32px; }
+    p  { font-size: 17px; }
+    .entree { font-size: 36px; padding: 10px 15px; }
+    a { font-size: 28px; }
+    .lien { font-size: 28px; min-height: 80px; }
+
+    .banner {
+        min-height: auto;
+        padding: 20px 15px;
+    }
+
+    .tabs {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 15px;
+    }
+    .tab {
+        font-size: 22px;
+        padding: 8px 14px;
+        margin: 0;
+    }
+
+    .c1, .c2, .c3, .c4,
+    .r1, .r2, .r3, .r4,
+    .m1, .m2, .m3, .m4,
+    .l1, .l2, .l3, .l4 {
+        width: 45%;
+        margin: 10px;
+    }
+
+    .image11, .image21, .image31 {
+        width: 100%;
+    }
+
+    .bandeau2 { padding: 40px 24px; }
+    .bandeau2-title { font-size: 38px; }
+    .bandeau2-body  { font-size: 16px; }
+    .cards-stage { width: 280px; height: 360px; }
+    .card { width: 175px; }
+    .card--far  { left: 0; }
+    .card--mid  { left: 40px; }
+    .card--front { left: 100px; }
+
+    .image13, .image23, .image33, .image43 {
+        width: 75%;
+    }
+
+    .imagefooter { width: 20%; }
+
+    #themeToggle { font-size: 20px; padding: 7px 15px; }
+
+    .museums-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .museum-btn {
+        min-width: 100%;
+        max-width: 100%;
+        height: 120px;
+    }
+
+    .museums-header h2 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    h1 { font-size: 32px; }
+    h2 { font-size: 22px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 26px; }
+    p  { font-size: 15px; }
+    .entree { font-size: 28px; padding: 8px 12px; }
+    a { font-size: 22px; }
+    .lien { font-size: 22px; min-height: 70px; padding: 15px; }
+
+    .banner {
+        padding: 15px 10px;
+    }
+
+    .tabs {
+        padding: 10px;
+        gap: 6px;
+    }
+    .tab {
+        font-size: 18px;
+        padding: 7px 12px;
+    }
+
+    .c1, .c2, .c3, .c4,
+    .r1, .r2, .r3, .r4,
+    .m1, .m2, .m3, .m4,
+    .l1, .l2, .l3, .l4 {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .communes, .rare, .maitre, .legendaire {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image11, .image21, .image31 {
+        width: 100%;
+        margin: 0;
+    }
+
+    .image11::before, .image21::before, .image31::before {
+        font-size: 44px;
+        padding: 14px 16px 0;
+    }
+
+    .image12, .texte12 {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    .image13, .image23, .image33, .image43 {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    .imagefooter { width: 30%; }
+
+    #themeToggle { font-size: 18px; padding: 6px 12px; }
+
+    .museums-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .museum-btn {
+        min-width: 100%;
+        max-width: 100%;
+        font-size: 14px;
+        padding: 12px 20px;
+        height: 100px;
+    }
+
+    .museums-header h2 {
+        font-size: 20px;
+    }
+}
+
+       .carte-du-mois-section {
+            background: var(--bg-section-dark);
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            border-top:2px solid #a78014a1;
+            border-bottom:2px solid #a78014a1;
+        }
+
+        .carte-du-mois-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            color: var(--text-color);
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .carte-du-mois-subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 20px;
+            color: rgba(201,169,89,0.6);
+            text-align: center;
+            margin-top: -20px;
+        }
+
+        .carte-api-wrapper {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50%       { transform: translateY(-10px) rotate(1deg); }
+        }
+
+
+        .carte-api-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carte-api-img-placeholder {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Dancing Script';
+            font-size: 18px;
+            color: rgba(201,169,89,0.4);
+        }
+
+        .carte-api-body {
+            padding: 14px 16px 18px;
+            background: #faf7f1;
+        }
+
+        .carte-api-nom {
+            font-family: 'Dancing Script';
+            font-size: 18px;
+            color: #8b6914;
+            font-weight: 700;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .carte-api-dates {
+            font-family: sans-serif;
+            font-size: 11px;
+            color: #aaa;
+            letter-spacing: .05em;
+        }
+
+        /* Panneau texte à droite */
+        .carte-api-info {
+            flex: 1;
+            min-width: 280px;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .carte-api-info-label {
+            font-family: sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            color: rgba(255, 183, 0, 0.73);
+            text-transform: uppercase;
+        }
+
+        .carte-api-info-titre {
+            font-family: 'Dancing Script';
+            font-size: 36px;
+            color: rgba(211, 198, 14, 0.51);
+            line-height: 1.15;
+        }
+
+        .carte-api-info-desc {
+            font-family: 'Dancing Script';
+            font-size: 17px;
+            color: rgba(201,169,89,0.75);
+            line-height: 1.8;
+        }
+
+        .carte-api-error {
+            font-family: 'Dancing Script';
+            font-size: 20px;
+            color: rgba(201,169,89,0.4);
+            text-align: center;
+            padding: 40px;
+        }
+
+        /* Séparateur décoratif */
+        .divider-ornement {
+            text-align: center;
+            font-family: 'Dancing Script';
+            font-size: 28px;
+            color: rgba(201,169,89,0.25);
+            letter-spacing: 8px;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .carte-du-jour-title { font-size: 34px; }
+            .carte-api-wrapper { flex-direction: column; align-items: center; }
+            .carte-api-info { min-width: 260px; }
+        }
