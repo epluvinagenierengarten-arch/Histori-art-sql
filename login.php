@@ -238,6 +238,9 @@
         <button class="buste-btn" id="busteBtn" aria-label="Profil" onclick="window.location.href='login.php'">
             <img src="buste_clair.png" alt="Buste" id="busteImg">
         </button>
+        <button class="booster-btn" id="booster.btn" aria-label="Profil" onclick="window.location.href='booster.php'">
+            <img src="booster.png" alt="booster" id="busteImg">
+        </button>
         <button class="button" id="themeToggle">Mode clair</button>
     </header>
 
@@ -297,6 +300,23 @@
             Tous droits de reproduction et de diffusion réservés © 2025 Histori'art
         </div>
     </footer>
+
+    <script>
+        // Sauvegarde l'email si connexion réussie
+        const emailInput = document.getElementById('email');
+        const form = document.querySelector('form');
+
+        // Pré-remplir au chargement
+        const emailSauvegarde = localStorage.getItem('email_utilisateur');
+        if (emailSauvegarde) {
+            emailInput.value = emailSauvegarde;
+        }
+
+        //save
+        form.addEventListener('submit', () => {
+            localStorage.setItem('email_utilisateur', emailInput.value);
+        });
+    </script>
 
 </body>
 </html>

@@ -226,8 +226,11 @@ if (!isset($_SESSION['utilisateur_id'])) {
             <div class="entree"><a href="annexe.php">✦ Les cartes</a></div>
             <div class="entree"><a href="collection.php">✦ Les collections</a></div>
         </div>
-        <button class="buste-btn" id="busteBtn" aria-label="Profil" onclick="window.location.href='account.php'">
+        <button class="buste-btn" id="busteBtn" aria-label="Profil" onclick="window.location.href='login.php'">
             <img src="buste_clair.png" alt="Buste" id="busteImg">
+        </button>
+        <button class="booster-btn" id="booster.btn" aria-label="Profil" onclick="window.location.href='booster.php'">
+            <img src="booster.png" alt="booster" id="busteImg">
         </button>
         <button class="button" id="themeToggle">Mode clair</button>
     </header>

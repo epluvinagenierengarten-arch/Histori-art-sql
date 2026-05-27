@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!isset($_SESSION['utilisateur_id'])) {
     header('Location: login.php');
@@ -120,6 +122,7 @@ if (!isset($_SESSION['utilisateur_id'])) {
             width: 100%;
             letter-spacing: 0.05em;
             text-transform: uppercase;
+            margin: 10px 0;
         }
 
         .btn-logout:hover {
@@ -181,8 +184,11 @@ if (!isset($_SESSION['utilisateur_id'])) {
             <div class="entree"><a href="annexe.php">✦ Les cartes</a></div>
             <div class="entree"><a href="collection.php">✦ Les collections</a></div>
         </div>
-        <button class="buste-btn" id="busteBtn" aria-label="Profil" onclick="window.location.href='account.php'">
+        <button class="buste-btn" id="busteBtn" aria-label="Profil" onclick="window.location.href='login.php'">
             <img src="buste_clair.png" alt="Buste" id="busteImg">
+        </button>
+        <button class="booster-btn" id="booster.btn" aria-label="Profil" onclick="window.location.href='booster.php'">
+            <img src="booster.png" alt="booster" id="busteImg">
         </button>
         <button class="button" id="themeToggle">Mode clair</button>
     </header>
@@ -214,8 +220,16 @@ if (!isset($_SESSION['utilisateur_id'])) {
                 <button type="submit" class="btn-collection">Ma collection</button>
             </form>
 
+            <button type="button" class="btn-collection" onclick="window.location.href='change.php'">
+                Changer de mot de passe
+            </button>
+
             <form action="logout.php" method="POST">
                 <button type="submit" class="btn-logout">Se déconnecter</button>
+            </form>
+
+            <form action="delete.php" method="POST">
+                <button type="submit" class="btn-logout">Supprimer le compte</button>
             </form>
 
         </div>

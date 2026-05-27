@@ -12,26 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <title>Histori'art — Les Cartes</title>
-</head>
-
-<main>
-  <header class="banner">
-        <h1>Histori'art</h1>
-        <div class="main">
-            <h2>Le jeu de cartes sur l'histoire de l'art</h2>
-        </div>
-        <div class="guide">
-            <div class="entree"><a href="index.php">✦ Menu</a></div>
-            <div class="entree"><a href="annexe.php">✦ Les cartes</a></div>
-            <div class="entree"><a href="collection.php">✦ Les collections</a></div>
-        </div>
-        <button class="buste-btn" id="busteBtn" aria-label="Profil" onclick="window.location.href='login.php'">
-            <img src="buste_clair.png" alt="Buste" id="busteImg">
-        </button>
-        <button class="button" id="themeToggle">Mode clair</button>
-    </header>
-</main>
-
 <style>
     html,
     body {
@@ -109,6 +89,29 @@
 
   </style>
 </head>
+
+<main>
+  <header class="banner">
+        <h1>Histori'art</h1>
+        <div class="main">
+            <h2>Le jeu de cartes sur l'histoire de l'art</h2>
+        </div>
+        <div class="guide">
+            <div class="entree"><a href="index.php">✦ Menu</a></div>
+            <div class="entree"><a href="annexe.php">✦ Les cartes</a></div>
+            <div class="entree"><a href="collection.php">✦ Les collections</a></div>
+        </div>
+        <button class="buste-btn" id="busteBtn" aria-label="Profil" onclick="window.location.href='login.php'">
+            <img src="buste_clair.png" alt="Buste" id="busteImg">
+        </button>
+        <button class="booster-btn" id="booster.btn" aria-label="Profil" onclick="window.location.href='booster.php'">
+            <img src="booster.png" alt="booster" id="busteImg">
+        </button>
+        <button class="button" id="themeToggle">Mode clair</button>
+    </header>
+</main>
+
+
 
 <body>
     <main>
