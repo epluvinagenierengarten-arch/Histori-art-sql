@@ -390,7 +390,8 @@ display: flex;
     <div id="cooldown-msg" class="msg-bar msg-bar--cooldown"></div>
 
     <section class="boosters-section">
-        <h2>Choisissez votre collection</h2>
+        <h2>Choisissez un booster</h2>
+        <h3>Vous pouvez ouvrur un booster une seule fois toutes les 24h </h3>
 
         <div class="boosters-grid">
 
