@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
 <style>
 .boosters-section {
-    padding: 2rem;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -160,24 +160,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 }
 
 .pack-btn {
-    background: none;
-    border: none;
-    padding: 0;
+    background: none;
+    padding: 2px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: .75rem;
-    transition: transform .35s ease;
+    gap: 0.75rem;
+    transition: transform 0.35s ease;
 }
-.pack-btn:hover { transform: translateY(-8px); }
+.pack-btn:hover { 
+    transform: translateY(-8px); 
+}
 
 .booster-pack {
     width: 200px;
     height: 300px;
-    border-radius: 16px;
+    border-radius: 2ppx;
     overflow: hidden;
-    transition: box-shadow .35s ease;
+    transition: box-shadow 0.35s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,16 +186,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 }
 
 .booster-louvre .booster-pack {
-    box-shadow: 0 10px 40px rgba(201,168,76,.35);
-    border: 2px solid rgba(201,168,76,.4);
+    box-shadow: 0 10px 40px rgba(201,168,76,.35);
 }
-.booster-louvre:hover .booster-pack { box-shadow: 0 20px 60px rgba(201,168,76,.6); }
+.booster-louvre:hover .booster-pack { box-shadow: 0 20px 60px rgba(201,168,76,.6); 
+}
 
 .booster-moma .booster-pack {
     box-shadow: 0 10px 40px rgba(160,0,30,.35);
-    border: 2px solid rgba(232,0,58,.35);
+    border: 2px solid rgba(232,0,58,0.35);
 }
-.booster-moma:hover .booster-pack { box-shadow: 0 20px 60px rgba(232,0,58,.6); }
+.booster-moma:hover .booster-pack { box-shadow: 0 20px 60px rgba(232,0,58,0.6); }
 
 .booster-vangogh .booster-pack {
     box-shadow: 0 10px 40px rgba(26,92,122,.35);
@@ -232,8 +233,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 }
 
 .booster-label {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.3rem;
+    font-family: 'Dancing Script';
+    font-size: 42 px;
     color: var(--text-color);
 }
 
@@ -242,13 +243,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     max-width: 500px;
     padding: 1rem 1.5rem;
     border-radius: 10px;
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Dancing Script';
     font-size: 1.1rem;
     text-align: center;
     margin: 0 auto;
 }
-.msg-bar--cooldown { background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.35); color: #c9a84c; }
-.msg-bar--error    { background: rgba(160,0,30,.1);   border: 1px solid rgba(160,0,30,.4);   color: #e87070; }
+.msg-bar--cooldown { 
+background: rgba(201,168,76,.1); 
+border: 1px solid rgba(201,168,76,.35); color: #c9a84c; 
+}
+
+.msg-bar--error    { 
+background: rgba(160,0,30,.1);   
+border: 1px solid rgba(160,0,30,.4);   
+color: #e87070; 
+}
 
 #overlay {
     position: fixed;
@@ -262,7 +271,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     gap: 2rem;
     padding: 2rem;
 }
-#overlay.active { display: flex; }
+
+#overlay.active { 
+display: flex; 
+}
 
 #loading { display: none; flex-direction: column; align-items: center; gap: 1rem; }
 
