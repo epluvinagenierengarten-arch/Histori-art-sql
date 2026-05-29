@@ -8,12 +8,16 @@ $cacheValid = file_exists($cacheFile) && (time() - filemtime($cacheFile) < 26298
 if ($cacheValid) {
     $artOfmounth = json_decode(file_get_contents($cacheFile), true);
 } else {
+    // pour éviter que file_get_contents ne sse bloque trop longtemps, avec un timeout de 5 secondes
     $ctx = stream_context_create(['http' => ['timeout' => 5]]);
     $raw = @file_get_contents(
         "https://api.artsearch.io/artworks/random?api-key={$API_KEY}",
         false, $ctx
     );
+
+    // Si la réponse existe, on la décode en tableau PHP
     $artOfmounth = $raw ? json_decode($raw, true) : null;
+    // Si on a bien reçu des données valides,
     if ($artOfmounth) {
         file_put_contents($cacheFile, json_encode($artOfmounth));
     }
@@ -21,10 +25,10 @@ if ($cacheValid) {
 
 // Rareté aléatoire pour la carte du mois
 $raretés = [
-    ['label' => '✨ Légendaire', 'color' => '#f4d03f', 'glow' => 'rgba(244,208,63,0.5)'],
-    ['label' => '🟣 Maître',     'color' => '#9b59b6', 'glow' => 'rgba(186, 118, 210, 0.4)'],
-    ['label' => '🔵 Rare',       'color' => '#2ca1c5', 'glow' => 'rgba(46, 87, 112, 0.77)'],
-    ['label' => '🟢 Commune',     'color' => '#0ee22a', 'glow' => 'rgba(115, 149, 123, 0.4)'],
+    ['color' => '#f4d03f', 'glow' => 'rgba(244,208,63,0.5)'],
+    ['color' => '#9b59b6', 'glow' => 'rgba(186, 118, 210, 0.4)'],
+    ['color' => '#2ca1c5', 'glow' => 'rgba(46, 87, 112, 0.77)'],
+    ['color' => '#0ee22a', 'glow' => 'rgba(115, 149, 123, 0.4)'],
 ];
 $rareté = $raretés[array_rand($raretés)];
 ?>
@@ -43,8 +47,6 @@ $rareté = $raretés[array_rand($raretés)];
     <title>Histori'art</title>
 
     <style>
-        /*API*/
-
         /*visu carte*/
         .carte-api-card {
             width: 260px;
@@ -512,7 +514,6 @@ $rareté = $raretés[array_rand($raretés)];
 
                     <!-- La carte -->
                     <div class="carte-api-card">
-                        <div class="carte-api-badge"><?= $rareté['label'] ?></div>
                         <?php if (!empty($artOfmounth['image'])): ?>
                             <!-- Récupère image et titre de l'oeuvre -->
                             <img
@@ -561,9 +562,6 @@ $rareté = $raretés[array_rand($raretés)];
                                 ) ?>
                             </div>
                         <?php endif; ?>
-
-                        <!--Indique la rareté-->
-                        <div class="carte-api-info-rarety"><?= $rareté['label'] ?></div>
 
                         <!--le bouton-->
 

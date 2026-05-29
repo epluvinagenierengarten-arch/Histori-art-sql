@@ -64,6 +64,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'changer_mdp') {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
     <title>Histori'art – Changer de mot de passe </title>
     <style>
+        
     .changement-wrapper {
         flex: 1;
         display: flex;
@@ -77,7 +78,6 @@ if (isset($_POST['action']) && $_POST['action'] === 'changer_mdp') {
         width: 100%;
         max-width: 520px;
         background: var(--bg-banner);
-        border: 1px solid rgba(201, 169, 89, 0.2);
         border-top: 3px solid var(--text-color);
         border-radius: 4px;
         padding: 2.5rem 2.8rem 2.8rem;
@@ -85,21 +85,9 @@ if (isset($_POST['action']) && $_POST['action'] === 'changer_mdp') {
         animation: fadeSlideIn 0.6s ease forwards;
     }
 
-    .changement-panel::before {
-        content: '✦';
-        position: absolute;
-        top: -18px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 28px;
-        color: var(--text-color);
-        background: var(--bg-banner);
-        padding: 0 12px;
-        line-height: 1;
-    }
 
     .changement-titre {
-        font-family: 'Dancing Script', serif;
+        font-family: 'Dancing Script';
         font-size: 36px;
         color: var(--text-color);
         text-align: center;
@@ -109,10 +97,9 @@ if (isset($_POST['action']) && $_POST['action'] === 'changer_mdp') {
     .changement-sous-titre {
         font-family: 'Dancing Script', serif;
         font-size: 16px;
-        color: rgba(201, 169, 89, 0.5);
+        color: var(--bg-main-dark);
         text-align: center;
         margin-bottom: 2rem;
-        letter-spacing: .06em;
     }
 
     .champ-groupe {
@@ -125,13 +112,13 @@ if (isset($_POST['action']) && $_POST['action'] === 'changer_mdp') {
         font-size: 18px;
         color: var(--text-color);
         margin-bottom: 0.4rem;
-        opacity: .85;
+        opacity: 0.5;
     }
 
     .champ-input {
         width: 100%;
-        background: rgba(201, 169, 89, 0.04);
-        border: 1px solid rgba(201, 169, 89, 0.25);
+        background: var(--bg-main-dark);
+        border: 1px solid var(--bg-main-dark);
         border-radius: 4px;
         color: var(--text-color);
         font-family: 'Dancing Script', serif;
@@ -142,12 +129,11 @@ if (isset($_POST['action']) && $_POST['action'] === 'changer_mdp') {
     }
 
     .champ-input::placeholder {
-        color: rgba(201, 169, 89, 0.3);
+        color: var(--text-color);
     }
 
     .champ-input:focus {
         border-color: var(--text-color);
-        box-shadow: 0 0 10px rgba(201, 169, 89, 0.2);
     }
 
     .force-barre {
@@ -162,7 +148,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'changer_mdp') {
         height: 100%;
         width: 0%;
         border-radius: 2px;
-        transition: width .35s, background .35s;
+        transition: width 0.35s, background 0.35s;
     }
 
     .champ-indice {
@@ -226,7 +212,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'changer_mdp') {
         margin-top: 1.4rem;
         font-family: 'Dancing Script', serif;
         font-size: 20px;
-        color: rgba(201, 169, 89, 0.5);
+        color: #4D3E19;
         text-decoration: none;
         transition: color .25s;
     }

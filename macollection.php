@@ -1,14 +1,40 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['utilisateur_id'])) {
-    header('Location: login.php');
-    exit();
+// 1) Accès réservé aux utilisateurs connectés
+if (!isset($_SESSION["utilisateur_id"])) {
+    header("Location: login.php");
+    exit;
 }
-?>
 
+// 2) Connexion BDD et récupération des cartes de l'utilisateur
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=historiart;charset=utf8", "root", "", [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
+} catch (PDOException $e) {
+    die("Erreur de connexion à la base de données.");
+}
+
+$utilisateurId = $_SESSION["utilisateur_id"];
+
+$stmt = $pdo->prepare("
+    SELECT nom_carte, image_url, collection, date_obtention
+    FROM cartes_utilisateurs
+    WHERE utilisateur_id = ?
+    ORDER BY date_obtention DESC
+");
+$stmt->execute([$utilisateurId]);
+$cartes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$collectionLabels = [
+    'louvre'  => 'Musée du Louvre',
+    'moma'    => 'MoMA',
+    'vangogh' => 'Van Gogh Museum',
+];
+?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,205 +43,144 @@ if (!isset($_SESSION['utilisateur_id'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-    <title>Histori'art – Mon compte</title>
+    <title>Histori'art ~ Ma collection</title>
 
-    <style>
+<style>
+.collection-section {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
 
+.collection-section h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--text-color);
+}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.collection-count {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: rgba(201,168,76,.8);
+}
 
-    body {
-        font-family: 'Dancing Script', Georgia, serif;
-        background-color: var(--bg);
-        color: var(--text-color);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        transition: background-color var(--transition), color var(--transition);
+.collection-empty {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: rgba(201,168,76,.6);
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.collection-empty a {
+    color: #c9a84c;
+    text-decoration: underline;
+}
+
+/* Filtres */
+.filter-bar {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1rem;
+    background: transparent;
+    border: 1px solid rgba(201,168,76,.35);
+    color: rgba(201,168,76,.7);
+    padding: .4rem 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+}
+.filter-btn:hover,
+.filter-btn.active {
+    background: rgba(201,168,76,.15);
+    border-color: #c9a84c;
+    color: #c9a84c;
+}
+
+/* Grille */
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* MODIFICATION : Largeur fixe, hauteur automatique pour respecter le ratio 500x700 */
+.card-item {
+    width: 250px; 
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s ease;
+}
+.card-item:hover {
+    transform: translateY(-5px);
+}
+
+/* L'image prend toute la largeur et adapte sa hauteur proportionnellement (height: auto) */
+.card-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 7; /* Force le navigateur à réserver le bon espace 500x700 */
+    object-fit: contain; /* Garantit que l'image entière est visible sans coupure */
+    display: block;
+    border-radius: 8px;
+}
+
+/* Ajustement du placeholder pour qu'il garde les mêmes proportions si l'image bug */
+.card-item-placeholder {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 7;
+    background: #ede8dc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 8px;
+}
+
+.card-item-footer {
+    padding: .4rem .2rem;
+    background: transparent;
+}
+
+.card-item-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: .78rem;
+    color: #8b6914;
+    text-align: center;
+    display: block;
+}
+
+.card-item-collection {
+    font-family: 'Dancing Script', cursive;
+    font-size: .68rem;
+    color: rgba(139,105,20,.6);
+    text-align: center;
+    display: block;
+    margin-top: .1rem;
+}
+
+/* Version Mobile */
+@media (max-width: 600px) {
+    .card-item { 
+        width: 120px; /* La hauteur s'adaptera automatiquement à ~168px grâce à l'aspect-ratio */
     }
-
-    a {
-        color: inherit;
-        text-decoration: none;
-        transition: color var(--transition);
-    }
-
-    a:hover { color: var(--gold); }
-
-    .button {
-        background: transparent;
-        border: 1px solid var(--gold-border);
-        color: var(--gold-dim);
-        border-radius: 6px;
-        padding: 7px 14px;
-        font-size: 13px;
-        font-family: inherit;
-        cursor: pointer;
-        transition: all var(--transition);
-        flex-shrink: 0;
-    }
-
-    .button:hover {
-        background: var(--gold-faint);
-        color: var(--gold);
-        border-color: var(--gold-dim);
-    }
-
-    main {
-        flex: 1;
-        padding: 48px 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    main h1 {
-        font-size: 28px;
-        color: var(--text-muted);
-        font-weight: 400;
-        letter-spacing: 0.04em;
-        text-align: center;
-    }
-    .account-container {
-        background: var(--bg-section-light);
-        border: 1px solid var(--gold-border);
-        border-radius: 12px;
-        max-width: 520px;
-        width: 100%;
-        padding: 50px 40px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-        animation: fadeSlideIn 0.6s ease forwards;
-    }
-
-    .account-header {
-        text-align: center;
-        margin-bottom: 32px;
-        border-bottom: 1px solid var(--gold-border);
-        padding-bottom: 24px;
-    }
-
-    .account-header h2 {
-        font-size: 38px;
-        color: var(--text-color);
-        margin-bottom: 6px;
-        font-weight: 700;
-    }
-
-    .account-header p {
-        font-size: 14px;
-        color: var(--gold-dim);
-        letter-spacing: 0.04em;
-    }
-
-    /* Welcome card */
-    .welcome-card {
-        background: var(--bg-card);
-        border: 1px solid var(--gold-border);
-        border-radius: var(--radius);
-        padding: 22px 20px;
-        text-align: center;
-        margin-bottom: 28px;
-    }
-
-    .welcome-card p {
-        font-size: 22px;
-        color: var(--text-color);
-    }
-
-    .welcome-card span {
-        color: #b78917;
-        font-weight: 700;
-    }
-
-    /* Info rows */
-    .info-row {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 28px;
-    }
-
-    .info-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 16px;
-        border: 1px solid var(--gold-border);
-        border-radius: 8px;
-    }
-
-    .info-item .info-label {
-        font-size: 13px;
-        color: var(--gold-dim);
-        min-width: 60px;
-    }
-
-    .info-item .info-value {
-        font-size: 16px;
-        color: var(--text-color);
-        font-weight: 700;
-    }
-    .btn-logout {
-        width: 100%;
-        padding: 14px 32px;
-        background: transparent;
-        color: var(--red);
-        border: 1px solid var(--red-dim);
-        border-radius: 8px;
-        font-size: 17px;
-        font-weight: 700;
-        font-family: inherit;
-        cursor: pointer;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        transition: all var(--transition);
-    }
-
-    .btn-logout:hover {
-        background: rgba(212, 42, 0, 0.08);
-        border-color: var(--red);
-        transform: translateY(-1px);
-    }
-
-    .btn-collection {
-        width: 100%;
-        margin: 10px 0;
-        padding: 14px 32px;
-        background: transparent;
-        color: var(--gold-dim);
-        border: 1px solid var(--gold-dim);
-        border-radius: 8px;
-        font-size: 17px;
-        font-weight: 700;
-        font-family: inherit;
-        cursor: pointer;
-        letter-spacing: 0.05em;
-        transition: all var(--transition);
-    }
-
-    .btn-collection:hover {
-        background: var(--gold-faint);
-        color: var(--gold);
-        border-color: var(--gold);
-        transform: translateY(-1px);
-    }
-
-    @keyframes fadeSlideIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 640px) {
-        .banner { padding: 14px 18px; gap: 12px; }
-        .guide { display: none; }
-        .account-container { padding: 32px 22px; }
-        .footer { flex-direction: column; text-align: center; }
-    }
-    </style>
+}
+</style>
 </head>
 
-<body>
-
+<body class="body">
     <header class="banner">
         <h1>Histori'art</h1>
         <div class="main">
@@ -236,7 +201,39 @@ if (!isset($_SESSION['utilisateur_id'])) {
     </header>
 
     <main>
-        <h1> Votre collection est vide :(</h1>
+        <section class="collection-section">
+            <h2>Ma collection</h2>
+
+            <?php if (empty($cartes)): ?>
+                <p class="collection-empty">
+                    Tu n'as encore aucune carte.<br>
+                    <a href="booster.php">Ouvre ton premier booster !</a>
+                </p>
+            <?php else: ?>
+
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">Toutes</button>
+                    <button class="filter-btn" data-filter="louvre">Musée du Louvre</button>
+                    <button class="filter-btn" data-filter="moma">MoMA</button>
+                    <button class="filter-btn" data-filter="vangogh">Van Gogh Museum</button>
+                </div>
+
+                <div class="cards-grid" id="cards-grid">
+                    <?php foreach ($cartes as $carte): ?>
+                        <div class="card-item" data-collection="<?= htmlspecialchars($carte['collection']) ?>">
+                            <?php
+                                $imgPath = htmlspecialchars($carte['image_url']);
+                            ?>
+                            <img
+                                src="<?= $imgPath ?>"
+                                alt="<?= htmlspecialchars($carte['nom_carte']) ?>"
+                                onerror="this.outerHTML='<div class=\'card-item-placeholder\'>🖼</div>'"
+                            >
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </section>
     </main>
 
     <footer id="pagefooter" class="footer">
@@ -247,6 +244,41 @@ if (!isset($_SESSION['utilisateur_id'])) {
             Tous droits de reproduction et de diffusion réservés © 2025 Histori'art
         </div>
     </footer>
+
+<script>
+// Filtre par collection
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        let visible = 0;
+
+        document.querySelectorAll('.card-item').forEach(card => {
+            const show = filter === 'all' || card.dataset.collection === filter;
+            card.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+
+        // Affiche le message
+        let empty = document.getElementById('empty-msg');
+        if (visible === 0) {
+            if (!empty) {
+                empty = document.createElement('p');
+                empty.id = 'empty-msg';
+                empty.className = 'collection-empty';
+                empty.textContent = 'Il n\'y a rien ici.';
+                document.getElementById('cards-grid').after(empty);
+            }
+            empty.style.display = 'block';
+        // APU message
+        } else {
+            if (empty) empty.style.display = 'none';
+        }
+    });
+});
+</script>
 
 </body>
 </html>

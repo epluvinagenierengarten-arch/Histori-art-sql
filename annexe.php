@@ -33,6 +33,7 @@
     }
 
     .swiper-slide {
+      position: relative;
       text-align: center;
       font-size: 18px;
       display: flex;
@@ -87,6 +88,25 @@
         object-fit: contain;
     }
 
+    .fav-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      z-index: 10;
+    }
+
+    .fav-btn svg path {
+      transition: fill 0.2s;
+    }
+
+    .fav-btn.active svg path {
+      fill: var(--text-color); /* cœur plein quand actif */
+    }
+
   </style>
 </head>
 
@@ -121,23 +141,171 @@
       </div>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <!-- Images : Louvre -->
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/joconde.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/dianedeversailles.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/ferronniere.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/Horaces.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/libertéguidantlepeuple.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/louisXIV.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/meduse.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/napoleon.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/nocedecana.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/odalisque.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/psychée.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/scribe.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/Vitruve.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/Victory.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/venusDeMilo.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="louvre/Zodiaque.png"></div></div>
+          <!-- cartes : Louvre -->
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/joconde.png" alt="joconde">
+            </div>
+            <button class="fav-btn" data-carte="louvre/joconde" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/dianedeversailles.png" alt="diane de versailles">
+            </div>
+            <button class="fav-btn" data-carte="louvre/dianedeversailles" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/ferronniere.png" alt="ferronniere">
+            </div>
+            <button class="fav-btn" data-carte="louvre/ferronniere" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/Horaces.png" alt="les Horaces">
+            </div>
+            <button class="fav-btn" data-carte="louvre/Horaces" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/libertéguidantlepeuple.png" alt="la liberté guidant le peuple">
+            </div>
+            <button class="fav-btn" data-carte="louvre/libertéguidantlepeuple" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/louisXIV.png" alt="le portrait de Louis XIV">
+            </div>
+            <button class="fav-btn" data-carte="louvre/louisXIV" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/meduse.png" alt="le radeau de la meduse">
+            </div>
+            <button class="fav-btn" id="fav-btn" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/napoleon.png" alt="portrait de napoléon 1er">
+            </div>
+            <button class="fav-btn" data-carte="louvre/napoleon" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/nocedecana.png" alt="les noces de cana">
+            </div>
+            <button class="fav-btn" data-carte="louvre/nocedecana" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/odalisque.png" alt="la grande odalisque">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/psychée.png" alt="psychée">
+            </div>
+            <button class="fav-btn" data-carte="louvre/psychée" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/scribe.png" alt="le scribe">
+            </div>
+            <button class="fav-btn" data-carte="louvre/scribe" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/Vitruve.png" alt="vitruve">
+            </div>
+            <button class="fav-btn" data-carte="louvre/vitruve" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/Victory.png" alt="victoire">
+            </div>
+            <button class="fav-btn" data-carte="louvre/victory" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/venusDeMilo.png">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="louvre/Zodiaque.png" alt="zodiaque">
+            </div>
+            <button class="fav-btn" data-carte="louvre/zodiaque" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
         </div>
         <div class="swiper-pagination"></div>
       </div>
@@ -148,23 +316,182 @@
       </div>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <!-- Images : MoMA -->
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/avignon.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/boat.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/bohemienne.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/catalan.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/chatetoiseau.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/familykhalo.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/fingerman.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/frida.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/hope2.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/lavilleseleve.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/lesamants.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/memoiredali.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/mirroirmagritte.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/nuitetoilee.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/pontmonet.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="moma/woman.png"></div></div>
+          <!-- cartes : MoMA -->
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/avignon.png" alt="demoiselles d'avignon">
+            </div>
+            <button class="fav-btn" data-carte="moma/avignon" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/boat.png" alt="bateau matisse">
+            </div>
+            <button class="fav-btn" data-carte="moma/boat" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/bohemienne.png" alt="la bohemienne endormie">
+            </div>
+            <button class="fav-btn" data-carte="moma/bohemienne" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/catalan.png" alt="catalan">
+            </div>
+            <button class="fav-btn" data-carte="moma/catalan" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/chatetoiseau.png" alt="le chat et l'oiseau">
+            </div>
+            <button class="fav-btn" data-carte="moma/chatetoiseau" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/familykhalo.png" alt="family khalo">
+            </div>
+            <button class="fav-btn" data-carte="moma/familykhalo" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/fingerman.png" alt="finger man">
+            </div>
+            <button class="fav-btn" data-carte="moma/fingerman" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/frida.png" alt="autoportrait frida khalo">
+            </div>
+            <button class="fav-btn" data-carte="moma/frida" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/hope2.png" alt="l'espoir 2">
+            </div>
+            <button class="fav-btn" data-carte="moma/hope2" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/lavilleseleve.png" alt="la ville se leve">
+            </div>
+            <button class="fav-btn" data-carte="moma/lavilleseleve" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/lesamants.png" alt="les amants">
+            </div>
+            <button class="fav-btn" data-carte="moma/lesamants" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/memoiredali.png" alt="memoire dali">
+            </div>
+            <button class="fav-btn" data-carte="moma/memoiredali" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/mirroirmagritte.png" alt="mirroir magritte">
+            </div>
+            <button class="fav-btn" data-carte="moma/mirroirmagritte" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/nuitetoilee.png" alt="la nuit étoilée">
+            </div>
+            <button class="fav-btn" data-carte="moma/nuitetoilee" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/pontmonet.png" alt="pont monet">
+            </div>
+            <button class="fav-btn" data-carte="moma/pontmonet" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="moma/woman.png" alt="woman"> 
+            </div>
+            <button class="fav-btn" data-carte="moma/woman" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
         </div>
         <div class="swiper-pagination"></div>
       </div>
@@ -177,22 +504,182 @@
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           <!-- Images : Van Gogh Museum -->
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/amandier.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/autoportraitChevalet.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/chambreVG.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/chaussures.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/corbeaux.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/feutre.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/gauguin.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/maisonjaune.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/moisson.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/paysagepluie.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/pecher.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/racinesarbre.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/saintemariemarin.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/squelette.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/Iris.png"></div></div>
-          <div class="swiper-slide"><div class="carte-placeholder"><img src="vgmus/tournesols.png"></div></div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/amandier.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/amandier" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/autoportraitChevalet.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/autoportraitchevalet" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/chambreVG.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/chambreVG" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/chaussures.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/chaussures" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/corbeaux.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/corbeaux" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/feutre.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/feutre" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/gauguin.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/gauguin" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/maisonjaune.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/maisonjaune" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/moisson.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/moisson" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/paysagepluie.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/paysagepluie" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/pecher.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/pecher" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/racinesarbre.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/racinesarbre" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/saintemariemarin.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/saintemariemarin" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/squelette.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/squelette" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/Iris.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/Iris" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="carte-placeholder">
+              <img src="vgmus/tournesols.png">
+            </div>
+            <button class="fav-btn" data-carte="vgmus/tournesol" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
         </div>
         <div class="swiper-pagination"></div>
       </div>
@@ -218,6 +705,16 @@
           clickable: true,
         },
       });
+
+    const btn = document.getElementById('fav-btn');
+    let isFav = false;
+
+    btn.addEventListener('click', () => {
+      isFav = !isFav;
+      btn.classList.toggle('active', isFav);
+      btn.setAttribute('aria-label', isFav ? 'Retirer des favoris' : 'Ajouter aux favoris');
+    });
+
     </script>
 </body>
 
