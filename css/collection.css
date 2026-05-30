@@ -1,0 +1,147 @@
+/* ============================================================
+   COLLECTION — Page Ma collection (macollection.php)
+   ============================================================ */
+
+.collection-section {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.collection-section h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+.collection-count {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: rgba(201, 168, 76, .8);
+}
+
+.collection-empty {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: rgba(201, 168, 76, .6);
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.collection-empty a {
+    color: #c9a84c;
+    text-decoration: underline;
+}
+
+/* Filtres */
+.filter-bar {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1rem;
+    background: transparent;
+    border: 1px solid rgba(201, 168, 76, .35);
+    color: rgba(201, 168, 76, .7);
+    padding: .4rem 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: rgba(201, 168, 76, .15);
+    border-color: #c9a84c;
+    color: #c9a84c;
+}
+
+/* Grille de cartes */
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.card-item {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s ease;
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
+}
+
+.card-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 7;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+}
+
+.card-item-placeholder {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 7;
+    background: #ede8dc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 8px;
+}
+
+.card-item-footer {
+    padding: .4rem .2rem;
+    background: transparent;
+}
+
+.card-item-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: .78rem;
+    color: #8b6914;
+    text-align: center;
+    display: block;
+}
+
+.card-item-collection {
+    font-family: 'Dancing Script', cursive;
+    font-size: .68rem;
+    color: rgba(139, 105, 20, .6);
+    text-align: center;
+    display: block;
+    margin-top: .1rem;
+}
+
+/* Bouton favori (annexe.php) */
+.fav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 10;
+}
+
+.fav-btn svg path {
+    transition: fill 0.2s;
+}
+
+.fav-btn.active svg path {
+    fill: var(--text-color);
+}

@@ -1,0 +1,33 @@
+.tabs {
+    display: flex;
+    justify-content: center;
+    background: var(--bg-section-light);
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tab {
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 30px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    background: rgb(194, 175, 129);
+    color: black;
+    border-radius: 8px;
+}
+
+.tab.active {
+    background: black;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.visible {
+    display: block;
+}

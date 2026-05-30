@@ -1,0 +1,54 @@
+/* ============================================================
+   MUSEUMS — Boutons musées & section collection
+   ============================================================ */
+
+.museums-container {
+    width: 100%;
+    padding: 40px 20px;
+    background: var(--bg-main-dark);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.museums-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.museum-btn {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    padding: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    background: black;
+    font-family: 'Dancing Script', serif;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+
+.museum-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.museum-btn:hover {
+    background-color: #8b6914;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(201, 169, 89, 0.6);
+}

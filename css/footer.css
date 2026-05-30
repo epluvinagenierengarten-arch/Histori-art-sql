@@ -1,0 +1,30 @@
+footer {
+    background: var(--bg-banner);
+    justify-content: center;
+    min-height: 50px;
+    padding: 10px 0;
+    flex-shrink: 0;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    background: var(--bg-banner);
+    min-height: 50px;
+    padding: 10px;
+}
+
+.imagefooter {
+    width: 5%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.textfooter {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,147 @@
+/* ============================================================
+   BANNER — Header / Navigation
+   ============================================================ */
+
+.banner {
+    background: var(--bg-banner);
+    min-height: 270px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.banner .banner_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Navigation guide */
+.guide {
+    display: flex;
+    color: var(--text-color);
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.guide a {
+    color: var(--text-color);
+    position: relative;
+}
+
+.guide a:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    background-color: var(--text-color);
+    height: 2px;
+    width: 0%;
+    border-radius: 2px;
+    transition: 0.5s;
+}
+
+.guide a:hover:after {
+    width: 100%;
+}
+
+/* Bouton buste (profil) */
+.buste-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 225px;
+    width: 44px;
+    height: 44px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.buste-btn img {
+    width: 50px;
+    height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    min-width: unset;
+    object-fit: contain;
+    display: block;
+}
+
+.buste-btn:hover img {
+    opacity: 0.75;
+    transition: opacity 0.2s;
+}
+
+/* Bouton booster */
+.booster-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 275px;
+    width: 44px;
+    height: 44px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.booster-btn img {
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    min-width: unset;
+    object-fit: contain;
+    display: block;
+}
+
+.booster-btn:hover img {
+    opacity: 0.75;
+    transition: opacity 0.2s;
+}
+
+/* Bouton thème */
+#themeToggle {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 28px;
+    padding: 10px 25px;
+    border: 2px solid var(--text-color);
+    background: transparent;
+    color: var(--text-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease, color 0.3s ease, background 0.3s ease, border 0.3s ease;
+    box-shadow: 0 0 8px rgba(201, 169, 89, 0.4);
+}
+
+#themeToggle:hover {
+    background: var(--text-color);
+    color: #1111;
+    box-shadow: 0 0 15px rgba(201, 169, 89, 0.8), 0 0 25px rgba(201, 169, 89, 0.5);
+    transform: translateY(-2px);
+}
+
+#themeToggle:active {
+    transform: scale(0.95);
+}
+
+#themeToggle.clicked {
+    transform: scale(0.92);
+}
