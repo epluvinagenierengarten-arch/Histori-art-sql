@@ -1,3 +1,15 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) session_start();
+
+$favoris = [];
+if (isset($_SESSION['utilisateur_id'])) {
+    $pdo = new PDO('mysql:host=localhost;dbname=historiart', 'root', '');
+    $stmt = $pdo->prepare("SELECT carte_id FROM favoris WHERE utilisateur_id = ?");
+    $stmt->execute([$_SESSION['utilisateur_id']]);
+    $favoris = $stmt->fetchAll(PDO::FETCH_COLUMN);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr" data-theme="dark">
 <head>
@@ -212,7 +224,7 @@
             <div class="carte-placeholder">
               <img src="louvre/meduse.png" alt="le radeau de la meduse">
             </div>
-            <button class="fav-btn" id="fav-btn" aria-label="Ajouter aux favoris">
+            <button class="fav-btn" data-carte="louvre/meduse"aria-label="Ajouter aux favoris">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
                   stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -245,6 +257,12 @@
             <div class="carte-placeholder">
               <img src="louvre/odalisque.png" alt="la grande odalisque">
             </div>
+            <button class="fav-btn" data-carte="louvre/odalisque" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
           </div>
           <div class="swiper-slide">
             <div class="carte-placeholder">
@@ -294,6 +312,12 @@
             <div class="carte-placeholder">
               <img src="louvre/venusDeMilo.png">
             </div>
+            <button class="fav-btn" data-carte="louvre/venusdemilo" aria-label="Ajouter aux favoris">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 14 21 13 21"
+                  stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
           </div>
           <div class="swiper-slide">
             <div class="carte-placeholder">
@@ -492,18 +516,19 @@
                   stroke="var(--text-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
+            </div>
         </div>
         <div class="swiper-pagination"></div>
       </div>
 
       <!-- Section Van Gogh Museum -->
       <div class="museum-section">
-        <h2>Musée Van Gogh</h2>
+        <h2>Van Gogh Museum</h2>
       </div>
 
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <!-- Images : Van Gogh Museum -->
+          <!-- cartes : Van Gogh Museum -->
           <div class="swiper-slide">
             <div class="carte-placeholder">
               <img src="vgmus/amandier.png">
@@ -705,16 +730,27 @@
           clickable: true,
         },
       });
+      const favoris = <?= json_encode($favoris) ?>;
 
-    const btn = document.getElementById('fav-btn');
-    let isFav = false;
+      document.querySelectorAll('.fav-btn').forEach(btn => {
+        // Coche les cœurs déjà en favoris
+        if (favoris.includes(btn.dataset.carte)) {
+          btn.classList.add('active');
+          btn.setAttribute('aria-label', 'Retirer des favoris');
+        }
 
-    btn.addEventListener('click', () => {
-      isFav = !isFav;
-      btn.classList.toggle('active', isFav);
-      btn.setAttribute('aria-label', isFav ? 'Retirer des favoris' : 'Ajouter aux favoris');
-    });
+        btn.addEventListener('click', () => {
+          const isActive = btn.classList.toggle('active');
+          const carteId = btn.dataset.carte;
+          btn.setAttribute('aria-label', isActive ? 'Retirer des favoris' : 'Ajouter aux favoris');
 
+          fetch('favorit_action.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ carte_id: carteId, action: isActive ? 'add' : 'remove' })
+          });
+        });
+      });
     </script>
 </body>
 

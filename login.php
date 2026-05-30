@@ -76,7 +76,7 @@
         <button class="button" id="themeToggle">Mode clair</button>
     </header>
 
-    <main>
+    <main class="form-page">
         <div class="login-container">
 
             <div class="login-header">
